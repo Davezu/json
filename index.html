@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+            <input type="text" id="fname" placeholder="First Name">
+            <input type="text" id="mname" placeholder="Middle Name">
+            <input type="text" id ="lname" placeholder="Last Name">
+            <input type="password" id ="password" placeholder="Password">
+            <input type="button" value="Save Data" onclick="saveData()">
+    </div>
+
+    <script>
+        function saveData(){
+            const data ={
+                fname: document.getElementById('fname').value,
+                mname: document.getElementById('mname').value,
+                lname: document.getElementById('lname').value,
+                password: document.getElementById('password').value
+            };
+            const jsonData = JSON.stringify(data,null, 2);
+            const blob = new Blob([jsonData], {type: `application/json`});
+
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'Data.json'
+            link.click();
+            }
+    </script>
+</body>
+</html>
+
+    %
